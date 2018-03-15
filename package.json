@@ -19,6 +19,8 @@
   },
   "dependencies": {
     "koa": "^2.5.0",
+    "koa-router": "^7.4.0",
+    "koa-static": "^4.0.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   }
