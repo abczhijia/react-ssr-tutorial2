@@ -4,13 +4,20 @@ import KoaRouter from 'koa-router';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import App from '../share/app';
+import { StaticRouter } from 'react-router-dom';
 
 const app = new Koa();
 const router = new KoaRouter();
 
 router.get('*', (ctx, next) => {
     const data = 'hello ssr';
-    const app = renderToString(<App data={data}/>);
+    const { request } = ctx;
+    const context = {};
+    const app = renderToString(
+        <StaticRouter location={request.url} context={context}>
+            <App data={data}/>
+        </StaticRouter>,
+    );
 
     ctx.body = `
     <!DOCTYPE html>
