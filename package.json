@@ -24,6 +24,7 @@
     "koa-router": "^7.4.0",
     "koa-static": "^4.0.2",
     "lodash": "^4.17.5",
+    "qs": "^6.5.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
