@@ -20,4 +20,16 @@ export default class BasePage extends React.Component {
 
         this.state = { prefetch };
     }
+
+    componentDidMount() {
+        //react-router v4 不再在location中提供query字段了，需要自己将search转成query对象
+        const query = qs.parse(this.props.location.search.replace(/^\?/, ''));
+
+        //如果定义了prefetch函数，并且this.state.prefetch中没有数据，则在浏览器端执行prefetch函数，并初始化数据
+        if (this.prefetch && !this.state.prefetch) {
+            this.prefetch(query).then(prefetch => {
+                this.setState({ prefetch });
+            });
+        }
+    }
 }

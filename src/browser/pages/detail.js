@@ -10,6 +10,12 @@ export default class Detail extends BasePage {
 
     render() {
         const { prefetch } = this.state;
+
+        // prefetch数据加载出来之前，可以展示loading
+        if (this.prefetch && !prefetch) {
+            return <div>loading ...</div>;
+        }
+
         const { project } = prefetch;
         return <div>
             <h1>{project.name}</h1>

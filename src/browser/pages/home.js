@@ -10,13 +10,19 @@ export default class Home extends BasePage {
 
     render() {
         const { prefetch } = this.state;
+
+        // prefetch数据加载出来之前，可以展示loading
+        if (this.prefetch && !prefetch) {
+            return <div>loading ...</div>;
+        }
+
         const { projects } = prefetch;
 
         return <div>Home Page
             {
                 projects.map(item => {
                     return <div key={item.id}>
-                        <h1><a href={`/detail?id=${item.id}`}>{item.name}</a></h1>
+                        <h1><Link to={`/detail?id=${item.id}`}>{item.name}</Link></h1>
                         <p>{item.description}</p>
                     </div>;
                 })
